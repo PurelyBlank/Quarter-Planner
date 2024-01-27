@@ -16,10 +16,13 @@ def main():
     if 'start' not in st.session_state:
         st.session_state.start = 0
     empty = st.empty()
-    st.text_input("Search...", key="widget", on_change=inp)
+    st.text_area("Search...", key="widget", on_change=inp)
     #  on_change continues the code after user queries again so we do not need while True loop
     query = st.session_state.input
-    print(query)
+    # print(query)
+    
+    ### Query contains user input
+    ### function(query)
     pass
 
 
