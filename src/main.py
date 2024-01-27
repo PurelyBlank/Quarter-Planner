@@ -101,6 +101,8 @@ def main():
     curr_class_query = st.session_state.curr_input
     prev_class_query = st.session_state.prev_input
     num_class_query = st.session_state.num_input
+
+    st.subheader("Extra Resources")
     applications()
     # print(query)
     
