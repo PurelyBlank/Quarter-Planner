@@ -1,0 +1,32 @@
+[
+    {
+        "name" : "ZotFinder",
+        "tags" : "",
+        "description" :  "",
+        "path" : "./logos/zotfinder.png"
+    },
+    {
+        "name" : "Antalmanac",
+        "tags" : "",
+        "description" : "",
+        "path" : "./logos/antalmanac.png"
+    },
+    {
+        "name" : "ZotCourse",
+        "tags" : "",
+        "description" : "",
+        "path" : "./logos/zotcourse.png"
+    },
+    {
+        "name" : "AntScoper",
+        "tags" : "",
+        "description" : "",
+        "path" : "./logos/antscoper.png"
+    },
+    {
+        "name" : "ZotMeal",
+        "tags" : "",
+        "description" : "",
+        "path" : "./logos/zotmeal.png"
+    }
+]
