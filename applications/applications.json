@@ -3,30 +3,40 @@
         "name" : "ZotFinder",
         "tags" : "",
         "description" :  "",
-        "path" : "./logos/zotfinder.png"
+        "path" : "./logos/zotfinder.png",
+        "page_url" : "NONE",
+        "is_app" : "Yes"
     },
     {
         "name" : "Antalmanac",
         "tags" : "",
         "description" : "",
-        "path" : "./logos/antalmanac.png"
+        "path" : "./logos/antalmanac.png",
+        "page_url" : "https://antalmanac.com/",
+        "is_app" : "No"
     },
     {
         "name" : "ZotCourse",
         "tags" : "",
         "description" : "",
-        "path" : "./logos/zotcourse.png"
+        "path" : "./logos/zotcourse.png",
+        "page_url" : "https://zotcourse.appspot.com/",
+        "is_app" : "No"
     },
     {
         "name" : "AntScoper",
         "tags" : "",
         "description" : "",
-        "path" : "./logos/antscoper.png"
+        "path" : "./logos/antscoper.png",
+        "page_url" : "https://antscoper.appspot.com/",
+        "is_app" : "No"
     },
     {
         "name" : "ZotMeal",
         "tags" : "",
         "description" : "",
-        "path" : "./logos/zotmeal.png"
+        "path" : "./logos/zotmeal.png",
+        "page_url" : "https://www.zotmeal.com/",
+        "is_app" : "Yes"
     }
 ]
