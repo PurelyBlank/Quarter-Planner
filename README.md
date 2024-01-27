@@ -1,2 +1,4 @@
 # Quarter Planner
-A UCI hub for all applications that students can access. 
+
+Install streamlit
+    - pip install streamlit
