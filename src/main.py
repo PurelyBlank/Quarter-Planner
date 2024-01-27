@@ -7,7 +7,7 @@ def applications():
         data = json.load(json_file)
 
     # Set the option to display images at the same width
-    st.set_option('deprecation.showfileUploaderEncoding', False)
+    # st.set_option('deprecation.showfileUploaderEncoding', False)
 
     # Define the size of the images
     image_width = 200
