@@ -7,20 +7,21 @@ class StudentProgress:
 
     def __init__(self):
         self.cats_and_courses = {"degree": list(), 
-                                 "GE I": list(), "GE II": list(), "GE III": list(), "GE IV": list(),
-                                 "GE Va": list(), "GE Vb": list(),
-                                 "GE VI": list(), "GE VII": list(), "GE VIII": list()}
+                                 "GE Ia": list(), "GE Ib": list(), "GE II": list(), 
+                                 "GE III": list(), "GE IV": list(), "GE Va": list(), 
+                                 "GE Vb": list(), "GE VI": list(), "GE VII": list(), 
+                                 "GE VIII": list()}
         
-        self.counts_per_ge = {"GE I": 2, "GE II": 3, "GE III": 3, "GE IV": 3,
-                              "GE V": 3, "GE VI": 3, "GE VII": 1, "GE VIII": 1}
+        self.counts_per_ge = {"GE Ia": 2, "GE Ia": 1, "GE II": 3, "GE III": 3, "GE IV": 3,
+                              "GE Va": 1, "GE Vb": 2, "GE VI": 3, "GE VII": 1, "GE VIII": 1}
         
     def __str__(self):
-        student_prog_str = "Categories and Courses:\n"
+        student_prog_str = "Categories and Courses:\n\n"
 
         for category, courses in self.cats_and_courses.items():
             student_prog_str += category + ': ' + ', '.join(courses) + '\n'
         
-        student_prog_str += "\nCounts Per GE:\n"
+        student_prog_str += "\nCounts Per GE:\n\n"
 
         for ge, count in self.counts_per_ge.items():
             student_prog_str += ge + ': ' + str(count) + '\n'
@@ -32,15 +33,34 @@ class StudentPreferences:
 
     def __init__(self):
         # the below attribute is a stub that will be improved upon further knowing the requirements
-        self.query_results = []
+        self.queries = ("Num CS Classes", "Num GEs", "Unit Range", "Undesirable Class Combos", 
+                        "Targeting GE Categories")
+        
+        self.num_queries = 5
+        self.query_results = [""] * self.num_queries
 
     def __str__(self):
-        stringpref = "Preferences:\n"
+        stringpref = "Preferences:\n\n"
         
-        for result in self.query_results:
-            stringpref += result + ", "
+        for i in range(0, self.num_queries):
+            stringpref += self.queries[i] + ": "
 
-        return stringpref[:-2]
+            if i <= 2:
+                stringpref += str(self.query_results[i])
+
+            elif i == 3:
+                for result in self.query_results[i]:
+                    stringpref += '(' + result[0] + ", " + result[1] + "), "
+
+                stringpref = stringpref[:-2]
+                
+            else:
+                stringpref += ", ".join(self.query_results[i])
+            
+            stringpref += '\n'
+
+        return stringpref
+
 
 class InputParser:
 
@@ -75,7 +95,34 @@ class InputParser:
                         student_prog.cats_and_courses[ge].append(course)
 
         with open(self.pref_path, mode='r', encoding='utf-8') as student_pref_file:
+            curr_query_num = 1
+
             for answer in student_pref_file:
-                student_pref.query_results.append(answer[:-1])
+                if curr_query_num <= 2:
+                    student_pref.query_results[curr_query_num - 1] = int(answer[:-1])
+
+                elif curr_query_num == 3:
+                    range_bounds = answer[:-1].split('-')
+
+                    if len(range_bounds) == 2:
+                        range_bounds[0] = int(range_bounds[0])
+                        range_bounds[1] = int(range_bounds[1])
+
+                        if (range_bounds[0] > range_bounds[1]):
+                            temp = range_bounds[0]
+                            range_bounds[0] = range_bounds[1]
+                            range_bounds[1] = temp
+
+                        student_pref.query_results[2] = range(*range_bounds)
+
+                elif curr_query_num == 4:
+                    crs_pairs = answer[:-1].split(", ")
+                    student_pref.query_results[3] = []
+                    [student_pref.query_results[3].append(pair[1:-1].split(", ")) for pair in crs_pairs]
+
+                else:
+                    student_pref.query_results[4] = answer
+
+                curr_query_num += 1
 
         return student_prog, student_pref
