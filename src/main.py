@@ -93,25 +93,27 @@ def main():
 
     # st.header("Extra Resources")
     applications()
+    if pref_class_query:
+        ssp = student_prog.split()
+
     if taken_class_query:
         st.header("Next Quarter Possible Courses")
         st.write(student_prog)
-    print(student_prog)
-    print(student_pref)
+    # print(student_prog)
+    # print(student_pref)
     
     # ics-6d 4 2
 
     ### Query contains user input
     ### function(query)
-    pass
 
 
-    g = DirectedGraph()
+        g = DirectedGraph()
 
-    potentialClasses = g.getPotentialFutureCourse(student_prog.cats_and_courses)
-    finalList = g.getFinalList(potentialClasses, 4)
+        potentialClasses = g.getPotentialFutureCourse(student_prog.cats_and_courses)
+        finalList = g.getFinalList(potentialClasses, 4)
 
-    print(finalList)
+        print(finalList)
     
 
 

@@ -28,12 +28,14 @@ class DirectedGraph:
                             return False
                     elif type(i) == str:
                         i = i.replace(' ','')
-                        c=True
-                        if i in course:
-                            c=False
-                            continue
-                    if c:
-                        return False
+                        if i not in course:
+                            return False
+                        # c=False
+                        # if i in course:
+                        #     c=False
+                        #     continue
+                    # if c:
+                    #     return False
 
             elif key == "OR":
                 c=False
@@ -134,6 +136,9 @@ class DirectedGraph:
             d = response.json()
 
             if d['number'][-1].isnumeric() == False:
+                x = d['number']
+                while(not x[-1].isnumeric()):
+                    x=x[:-1]
                 num = int(d['number'][:-1])
                 finalList.append(( (ord(d['number'][-1]) / 100) + num, course) )
             else:
