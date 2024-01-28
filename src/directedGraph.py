@@ -139,10 +139,10 @@ class DirectedGraph:
                 x = d['number']
                 while(not x[-1].isnumeric()):
                     x=x[:-1]
-                num = int(d['number'][:-1])
+                num = int(x)
                 finalList.append(( (ord(d['number'][-1]) / 100) + num, course) )
             else:
-                finalList.append( ( float(d['number']), course) )
+                finalList.append( ( float(d['number'][-1]), course) )
 
         newFinalList = sorted(finalList, key=lambda x: x[0])
 
