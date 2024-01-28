@@ -8,43 +8,29 @@ def applications():
     with open('./applications/applications.json') as json_file:
         data = json.load(json_file)
 
-    # Set the option to display images at the same width
-    # st.set_option('deprecation.showfileUploaderEncoding', False)
-
     # Define the size of the images
-    image_width = 100
+    image_width = 125
 
-    # Initialize a list to store image elements
-    image_elements = []
+    st.markdown("""
+    <style>
+        .sidebar .sidebar-content {
+            max-height: 80vh; /* Adjust as needed */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
     # Iterate over each application in the data
-    col1, col2, col3 = st.columns(3)
-    for index, app in enumerate(data):
-        # Add the image to the list of image elements
-        if index % 3 == 0:
-            with col1:
-                # st.markdown(f"[![{app['name']}]({app['path']})]({app['page_url']})")
-                st.markdown(f"### [{app['name']}]({app['page_url']})")
-                # st.header(app["name"])
-                st.image(app["path"], width=image_width)
-        elif index % 3 == 1:
-            with col2:
-                st.markdown(f"### [{app['name']}]({app['page_url']})")
-                # st.header(app["name"])
-                st.image(app["path"], width=image_width)            
-        elif index % 3 == 2:
-            with col3:
-                st.markdown(f"### [{app['name']}]({app['page_url']})")
-                # st.header(app["name"])
-                st.image(app["path"], width=image_width)
-        else:
-            col1, col2, col3 = st.columns(3)
-        # st.markdown(f"[![{app['name']}]({app['path']})]({app['page_url']})")
-        # image_elements.append(st.image(app["path"], caption=app["name"], width=image_width))
-    # Display the images in a row
-    # st.write("Applications:")
-    # st.write(image_elements)
+    with st.sidebar:
+         st.header("Extra Resources")
 
+    with st.sidebar:
+        for app in data:
+            st.markdown(f"### [{app['name']}]({app['page_url']})")
+            st.image(app["path"], width=image_width)
 
 def curr_inp():
     '''
@@ -60,14 +46,6 @@ def prev_inp():
     '''
     st.session_state.prev_input = st.session_state.prev_widget
     st.session_state.prev_widget = ""
-
-
-def num_inp():
-    '''
-        Sets session state of input to empty string
-    '''
-    st.session_state.num_input = st.session_state.num_widget
-    st.session_state.num_widget = ""
 
 
 def main():
@@ -96,9 +74,6 @@ def main():
     st.header("Preferences")
     st.text_area("Search...", key="prev_widget", on_change=prev_inp)
 
-    # st.header("# CS Classes")
-    # st.text_area("Search...", key="num_widget", on_change=num_inp)
-
     #  on_change continues the code after user queries again so we do not need while True loop
     taken_class_query = st.session_state.curr_input
     pref_class_query = st.session_state.prev_input
@@ -110,7 +85,7 @@ def main():
     ip = InputParser(taken_class_query, pref_class_query)
     student_prog, student_pref = ip.parse_input()
 
-    st.header("Extra Resources")
+    # st.header("Extra Resources")
     applications()
     
     print(student_prog)
