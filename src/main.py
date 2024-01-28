@@ -1,5 +1,6 @@
 import streamlit as st
 import input_format as inpf
+from directedGraph import DirectedGraph
 import json
 
 from student_info import InputParser
@@ -103,6 +104,16 @@ def main():
     ### Query contains user input
     ### function(query)
     pass
+
+
+    g = DirectedGraph()
+
+    potentialClasses = g.getPotentialFutureCourse(student_prog.cats_and_courses)
+    finalList = g.getFinalList(potentialClasses, 4)
+
+    print(finalList)
+    
+
 
 
 if __name__ == '__main__':
