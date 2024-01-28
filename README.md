@@ -1,7 +1,7 @@
-# Quarter Planner
+# UCI Quarter Planner
 
 ### Synopsis</br>
-The Quarter Planner project is to help UCI students (currently only for only ICS students but in Beta Phase) recommend classes one quarter ahead based on the current courses they have already taken.
+The Quarter Planner project is to help UCI students (currently only for __only__ ICS students but in Beta Phase) recommend classes one quarter ahead based on the current courses they have already taken.
 
 ## How to get started
 1) Clone the repository on Github
