@@ -2,6 +2,8 @@ import streamlit as st
 import input_format as inpf
 import json
 
+from student_info import InputParser
+
 def applications():
     with open('./applications/applications.json') as json_file:
         data = json.load(json_file)
@@ -64,8 +66,15 @@ def main():
     st.text_area("Search...", key="widget", on_change=inp)
     #  on_change continues the code after user queries again so we do not need while True loop
     query = st.session_state.input
+    
+    # parse input into a formatted input file using an input parser
+    ip = InputParser(query)
+    student_prog, student_pref = ip.parse_input()
+
     applications()
-    # print(query)
+    
+    print(student_prog)
+    print(student_pref)
     
     # ics-6d 4 2
 
