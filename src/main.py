@@ -73,8 +73,8 @@ def main():
 
     applications()
     
-    print(student_prog)
-    print(student_pref)
+    # print(student_prog)
+    # print(student_pref)
     
     # ics-6d 4 2
 
