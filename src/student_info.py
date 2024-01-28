@@ -16,10 +16,10 @@ class StudentProgress:
                               "GE Va": 1, "GE Vb": 2, "GE VI": 3, "GE VII": 1, "GE VIII": 1}
         
     def __str__(self):
-        student_prog_str = "Categories and Courses:\n\n"
+        student_prog_str = "Categories that Courses fulfill:\n\n"
 
         for category, courses in self.cats_and_courses.items():
-            student_prog_str += category + ': ' + ', '.join(courses) + '\n'
+            student_prog_str += category + ': ' + ', '.join(courses) + "\n\n"
         
         student_prog_str += "\nCounts Per GE:\n\n"
 
@@ -58,7 +58,7 @@ class StudentPreferences:
             else:
                 stringpref += "".join(self.query_results[i])
             
-            stringpref += '\n'
+            stringpref += '\n\n'
 
         return stringpref
 

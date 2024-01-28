@@ -94,10 +94,11 @@ def main():
     # st.header("Extra Resources")
     applications()
     if pref_class_query:
-        ssp = student_prog.split()
+        st.header("Course Preferences")
+        st.write(student_pref)
 
     if taken_class_query:
-        st.header("Next Quarter Possible Courses")
+        st.header("Completed Courses and Progress")
         st.write(student_prog)
     # print(student_prog)
     # print(student_pref)
@@ -112,8 +113,12 @@ def main():
 
         potentialClasses = g.getPotentialFutureCourse(student_prog.cats_and_courses)
         finalList = g.getFinalList(potentialClasses, 4)
+        
+        st.subheader("Course Recommendations")
+        for course in finalList:
+            st.write(course)
 
-        print(finalList)
+        # print(finalList)
     
 
 
