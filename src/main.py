@@ -69,10 +69,15 @@ def main():
     empty = st.empty()
     # st.text_input("Search...", key="widget", on_change=inp)
     st.header("Taken Classes")
-    st.text_area("Search...", key="curr_widget", on_change=curr_inp)
+    st.text_area("Classes taken...", key="curr_widget", on_change=curr_inp)
     
     st.header("Preferences")
-    st.text_area("Search...", key="prev_widget", on_change=prev_inp)
+    st.markdown("Please follow the specified format:<br /> \
+                [number of cs classes]<br /> \
+                [number of GEs]<br /> \
+                [start range of units]-[end range of units]<br /> \
+                [Undesirable courses (i.e. (I&CS53, COMPSCI161)]", unsafe_allow_html=True)
+    st.text_area("Insert Preferences...", key="prev_widget", on_change=prev_inp)
 
     #  on_change continues the code after user queries again so we do not need while True loop
     taken_class_query = st.session_state.curr_input
@@ -87,7 +92,9 @@ def main():
 
     # st.header("Extra Resources")
     applications()
-    
+    if taken_class_query:
+        st.header("Next Quarter Possible Courses")
+        st.write(student_prog)
     print(student_prog)
     print(student_pref)
     
