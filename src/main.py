@@ -2,6 +2,8 @@ import streamlit as st
 import input_format as inpf
 import json
 
+from student_info import InputParser
+
 def applications():
     with open('./applications/applications.json') as json_file:
         data = json.load(json_file)
@@ -104,7 +106,9 @@ def main():
 
     st.header("Extra Resources")
     applications()
-    # print(query)
+    
+    print(student_prog)
+    print(student_pref)
     
     # ics-6d 4 2
 
