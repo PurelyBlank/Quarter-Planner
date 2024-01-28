@@ -10,7 +10,7 @@ def applications():
     # st.set_option('deprecation.showfileUploaderEncoding', False)
 
     # Define the size of the images
-    image_width = 200
+    image_width = 100
 
     # Initialize a list to store image elements
     image_elements = []
@@ -22,17 +22,17 @@ def applications():
         if index % 3 == 0:
             with col1:
                 # st.markdown(f"[![{app['name']}]({app['path']})]({app['page_url']})")
-                st.markdown(f"# [{app['name']}]({app['page_url']})")
+                st.markdown(f"### [{app['name']}]({app['page_url']})")
                 # st.header(app["name"])
                 st.image(app["path"], width=image_width)
         elif index % 3 == 1:
             with col2:
-                st.markdown(f"# [{app['name']}]({app['page_url']})")
+                st.markdown(f"### [{app['name']}]({app['page_url']})")
                 # st.header(app["name"])
                 st.image(app["path"], width=image_width)            
         elif index % 3 == 2:
             with col3:
-                st.markdown(f"# [{app['name']}]({app['page_url']})")
+                st.markdown(f"### [{app['name']}]({app['page_url']})")
                 # st.header(app["name"])
                 st.image(app["path"], width=image_width)
         else:
@@ -101,6 +101,8 @@ def main():
     curr_class_query = st.session_state.curr_input
     prev_class_query = st.session_state.prev_input
     num_class_query = st.session_state.num_input
+
+    st.header("Extra Resources")
     applications()
     # print(query)
     
