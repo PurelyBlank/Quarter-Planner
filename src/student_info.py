@@ -44,17 +44,17 @@ class StudentPreferences:
 
 class InputParser:
 
-    def __init__(self, query: str):
+    def __init__(self, taken_query: str, pref_query: str):
         self.taken_path = Path("src/txt/taken.txt")
         self.pref_path = Path("src/txt/pref.txt")
 
-        split_query = query.split('PREF\n')
-        taken_query = ""
-        pref_query = ""
+        # split_query = taken_query.split('PREF\n')
+        # taken_query = ""
+        # pref_query = ""
         
-        if len(split_query) == 2:
-            taken_query = split_query[0]
-            pref_query = split_query[1]
+        # if len(split_query) == 2:
+        #     taken_query = split_query[0]
+        #     pref_query = split_query[1]
 
         taken_ui_input = open(self.taken_path, mode='w')
         taken_ui_input.write(taken_query)

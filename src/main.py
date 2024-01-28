@@ -90,19 +90,25 @@ def main():
         st.session_state.start = 0
     empty = st.empty()
     # st.text_input("Search...", key="widget", on_change=inp)
-    st.header("Current Classes")
+    st.header("Taken Classes")
     st.text_area("Search...", key="curr_widget", on_change=curr_inp)
     
-    st.header("Previous Classes")
+    st.header("Preferences")
     st.text_area("Search...", key="prev_widget", on_change=prev_inp)
 
-    st.header("# CS Classes")
-    st.text_area("Search...", key="num_widget", on_change=num_inp)
+    # st.header("# CS Classes")
+    # st.text_area("Search...", key="num_widget", on_change=num_inp)
 
     #  on_change continues the code after user queries again so we do not need while True loop
-    curr_class_query = st.session_state.curr_input
-    prev_class_query = st.session_state.prev_input
-    num_class_query = st.session_state.num_input
+    taken_class_query = st.session_state.curr_input
+    pref_class_query = st.session_state.prev_input
+    # num_class_query = st.session_state.num_input
+
+    ### Taken Classes
+    if taken_class_query and taken_class_query[-1] != '\n':
+        taken_class_query += "\n"
+    ip = InputParser(taken_class_query, pref_class_query)
+    student_prog, student_pref = ip.parse_input()
 
     st.header("Extra Resources")
     applications()
