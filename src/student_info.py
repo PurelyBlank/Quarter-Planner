@@ -48,14 +48,6 @@ class InputParser:
         self.taken_path = Path("src/txt/taken.txt")
         self.pref_path = Path("src/txt/pref.txt")
 
-        # split_query = taken_query.split('PREF\n')
-        # taken_query = ""
-        # pref_query = ""
-        
-        # if len(split_query) == 2:
-        #     taken_query = split_query[0]
-        #     pref_query = split_query[1]
-
         taken_ui_input = open(self.taken_path, mode='w')
         taken_ui_input.write(taken_query)
         taken_ui_input.close()
@@ -74,14 +66,13 @@ class InputParser:
             for course in student_taken_file:
                 course = course[:-1]
                 response = requests.get(url + course)
-                course_info = response.json()
 
-                ge_list = course_info['ge_list']
+                if (response.status_code == 200):
+                    ge_list = response.json()['ge_list']
 
-                for ge in ge_list:
-                    ge = ge.split(': ')[0]
-
-                    student_prog.cats_and_courses[ge].append(course)
+                    for ge in ge_list:
+                        ge = ge.split(': ')[0]
+                        student_prog.cats_and_courses[ge].append(course)
 
         with open(self.pref_path, mode='r', encoding='utf-8') as student_pref_file:
             for answer in student_pref_file:
