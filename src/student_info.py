@@ -6,7 +6,7 @@ import json
 class StudentProgress:
 
     def __init__(self):
-        self.cats_and_courses = {"degree": list(), 
+        self.cats_and_courses = {"DEGREE": list(), 
                                  "GE Ia": list(), "GE Ib": list(), "GE II": list(), 
                                  "GE III": list(), "GE IV": list(), "GE Va": list(), 
                                  "GE Vb": list(), "GE VI": list(), "GE VII": list(), 
@@ -50,12 +50,13 @@ class StudentPreferences:
 
             elif i == 3:
                 for result in self.query_results[i]:
-                    stringpref += '(' + result[0] + ", " + result[1] + "), "
+                    if len(result) == 2:
+                        stringpref += '(' + result[0] + ", " + result[1] + "), "
 
                 stringpref = stringpref[:-2]
                 
             else:
-                stringpref += ", ".join(self.query_results[i])
+                stringpref += "".join(self.query_results[i])
             
             stringpref += '\n'
 
@@ -116,7 +117,11 @@ class InputParser:
                         student_pref.query_results[2] = range(*range_bounds)
 
                 elif curr_query_num == 4:
-                    crs_pairs = answer[:-1].split(", ")
+                    crs_pairs = answer[:-1].split("), ")
+
+                    for i in range(0, len(crs_pairs) - 1):
+                        crs_pairs[i] += ')'
+
                     student_pref.query_results[3] = []
                     [student_pref.query_results[3].append(pair[1:-1].split(", ")) for pair in crs_pairs]
 
