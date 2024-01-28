@@ -149,8 +149,8 @@ class DirectedGraph:
         
 
         counter = 0
-        while (counter < numberOfCsClasses):
-            finalList.append(newFinalList[counter][1])
+        while (counter < numberOfCsClasses and counter < len(newFinalList)):
+            finalList.append( newFinalList[counter][1] )
             counter += 1
 
         
